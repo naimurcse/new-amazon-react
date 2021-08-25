@@ -1,0 +1,21 @@
+.order-container {
+    padding: 20px 10px;
+}
+
+.table-style {
+    width: 90%;
+    margin: 0 auto;
+    font-size: 17px;
+    margin-top: 25px;
+}
+
+.table-style tr {}
+
+.table-style tr td:nth-child(even) {
+    text-align: right;
+    font-weight: 700;
+}
+
+.table-style tr td:nth-child(odd) {
+    text-align: left;
+}
