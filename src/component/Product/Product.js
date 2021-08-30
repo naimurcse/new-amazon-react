@@ -2,17 +2,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 // import Button from '@restart/ui/esm/Button';
-import { Button } from 'react-bootstrap';
+import { Button, Col, Row } from 'react-bootstrap';
 import React from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import "./Product.css";
 import starReview from "../../images/star.png"
 
 const Product = (props) => {
+    // console.log(props);
     const selectedProduct = props.selectedProduct;
 
 
-    const {name,img,category,seller,price,shipping,stock,star} = props.product;
+    const {name,img,category,seller,price,shipping,stock,star, key} = props.product;
     let feedback = '';
     for (let i = 0; i < star; i++) {
         feedback = feedback + '*';
@@ -26,7 +27,7 @@ const Product = (props) => {
                     <img src={img} alt={category} />
                 </Col>
                 <Col className="d-flex flex-column justify-content-between">
-                    <h5>{name}</h5>
+                    <h5><Link to={"/product/"+key}>{name}</Link></h5>
                     <div>
                         <p>{seller}</p>
                         <Row>
@@ -43,7 +44,9 @@ const Product = (props) => {
                         <p>Only <strong>{stock}</strong> items left</p>
                     </div>
                     <div>
-                        <Button onClick={()=>selectedProduct(props.product)}  variant="warning"><FontAwesomeIcon icon={faShoppingCart} style={{marginRight:'10px'}}/>Add to Card</Button>
+                        {
+                            props.showAddToCart && <Button onClick={()=>selectedProduct(props.product)}  variant="warning"><FontAwesomeIcon icon={faShoppingCart} style={{marginRight:'10px'}}/>Add to Card</Button>
+                        }
                     </div>
                 </Col>
             </Row>

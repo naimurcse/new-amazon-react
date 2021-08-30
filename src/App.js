@@ -13,6 +13,10 @@ import {
   Link
 } from "react-router-dom";
 import Banner from './component/Banner/Banner';
+import Error from './component/Error/Error';
+import Review from './component/Review/Review';
+import Inventory from './component/Inventory/Inventory';
+import ProductDetails from './component/ProductDetails/ProductDetails';
 
 function App() {
   return (
@@ -21,21 +25,34 @@ function App() {
         <Header></Header>
       </div>
       <Banner />
-      <Shop></Shop>
 
         <Router>
-
-          {/* <Switch>
-              <Route path="/review">
-                <Product />
-              </Route>
-              <Route path="/order">
-                <Order />
-              </Route>
-              <Route path="/">
+          <Switch>
+              <Route exact path="/shop">
                 <Shop />
               </Route>
-            </Switch> */}
+              
+              <Route exact path="/review">
+                <Review />
+              </Route>
+
+              <Route exact path="/inventory">
+                <Inventory />
+              </Route>
+
+              <Route exact path="/product/:productKey">
+                <ProductDetails />
+              </Route>
+
+              <Route exact path="/">
+                <Shop />
+              </Route>
+
+              <Route path="*">
+                <Error />
+              </Route>
+
+            </Switch>
         </Router>
     </div>
   );

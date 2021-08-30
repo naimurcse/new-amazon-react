@@ -2,6 +2,7 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import fakeData from '../../fakeData';
+import { addToDatabaseCart } from '../../utilities/databaseManager';
 import Header from '../Header/Header';
 import Order from '../Order/Order';
 import Product from '../Product/Product';
@@ -15,9 +16,13 @@ const Shop = () => {
 
     const [addProduct, setAddProduct] = useState([]);
 
-    const selectedProduct = (props) =>{
-        const newProduct = [...addProduct, props]
-        setAddProduct(newProduct);
+    const selectedProduct = (product) => {
+        const newProducts = [...addProduct, product]
+        setAddProduct(newProducts);
+
+        const sameProduct = newProducts.filter(pd => pd.key === product.key);
+        let count = sameProduct.length;
+        addToDatabaseCart(product.key, count)
     }
     // console.log(addProduct);
 
@@ -32,6 +37,8 @@ const Shop = () => {
                         count.map(product => <Product 
                             product={product}
                             selectedProduct={selectedProduct}
+                            key={product.key}
+                            showAddToCart ={true}
                             ></Product>)
                     }
                 </Col>

@@ -7,12 +7,12 @@ import { Link } from 'react-router-dom';
 const MainManu = () => {
     return (
         <>
-            {/* <Nav.Link>Home</Nav.Link>
-            <Nav.Link>Products</Nav.Link>
-            <Nav.Link>Order Review</Nav.Link> */}
-            <a to="/"><Nav.Link>Home</Nav.Link></a>
+            <Nav.Link href="/shop">Shop</Nav.Link>
+            <Nav.Link href="/review">Order Review</Nav.Link>
+            <Nav.Link href="/inventory">Manage Inventory</Nav.Link>
+            {/* <a to="/"><Nav.Link>Home</Nav.Link></a>
             <a to="/shop"><Nav.Link>Products</Nav.Link></a>
-            <a to="/review"><Nav.Link>Order Review</Nav.Link></a>
+            <a to="/review"><Nav.Link>Order Review</Nav.Link></a> */}
         </>
 
     );
